@@ -24,7 +24,7 @@ def login():
 
             st.empty()
             # Redirect to main app
-            index.main()
+            index.app()
         else:
             st.error("Invalid username or password. Please try again.")
 
