@@ -2,8 +2,8 @@ import streamlit as st
 
 # Function to check login credentials
 def authenticate(username, password, secrets):
-    correct_username = secrets["username"]
-    correct_password = secrets["password"]
+    correct_username = st.secrets["username"]
+    correct_password = st.secrets["password"]
     return username == correct_username and password == correct_password
 
 # Main function for the login page
