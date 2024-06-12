@@ -1,18 +1,24 @@
 import streamlit as st
 
-# Load secrets
-st.secrets["username"] = st.secrets["username"]
-st.secrets["password"] = st.secrets["password"]
-
 # Function to check login credentials
-def authenticate(username, password):
-    correct_username = st.secrets["username"]
-    correct_password = st.secrets["password"]
+def authenticate(username, password, secrets):
+    correct_username = secrets["username"]
+    correct_password = secrets["password"]
     return username == correct_username and password == correct_password
 
 # Main function for the login page
-def login(secrets):
+def login():
     st.title("Login to Your App")
+    
+    # Load secrets
+    try:
+        secrets = {
+            "username": st.secrets["username"],
+            "password": st.secrets["password"]
+        }
+    except KeyError:
+        st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
+        return
     
     # Get user input
     username = st.text_input("Username")
@@ -29,18 +35,8 @@ def login(secrets):
             st.error("Invalid username or password. Please try again.")
 
 def main():
-    # Load secrets
-    try:
-        secrets = {
-            "username": st.secrets["username"],
-            "password": st.secrets["password"]
-        }
-    except KeyError:
-        st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
-        return
-    
     if "login" not in st.query_params:
-        login(secrets)
+        login()
     else:
         # Redirect to main app
         # Replace 'mew.py' with the filename of your main app
