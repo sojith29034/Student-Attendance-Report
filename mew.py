@@ -31,8 +31,7 @@ def main():
         login()
     else:
         # Redirect to main app
-        st.title("Main App")
-        st.write("Welcome to the main app!")
+        import index
 
 if __name__ == "__main__":
     main()
