@@ -4,7 +4,27 @@ from datetime import datetime
 from io import BytesIO
 
 
-def run_main_app():  
+def run_main_app():      
+    st.markdown("""
+        <style>
+            .reportview-container {margin-top: -2em;}
+            .st-emotion-cache-1jicfl2 {padding: 2rem 3rem 10rem;}
+            h1#student-attendance-report {text-align: center;}
+            header #MainMenu {visibility: hidden; display: none;}
+            .stActionButton {visibility: hidden; display: none;}
+            # .stDeployButton {display:none;}
+            footer {visibility: hidden;}
+            stDecoration {display:none;}
+            .stTabs button {margin-right: 50px;}
+            .viewerBadge_container__r5tak {display: none;}
+            p {user-select: none; filter: opacity(0);}
+        </style>
+    """, unsafe_allow_html=True)
+    
+    
+    
+    
+    
     # Helper function to calculate attendance percentage
     def calculate_attendance(df):
         # Calculate total sessions and present sessions
