@@ -1,13 +1,13 @@
 import streamlit as st
 
-# Define secrets
-USERNAME_SECRET = "username"
-PASSWORD_SECRET = "password"
+# Load secrets
+st.secrets["username"] = st.secrets["username"]
+st.secrets["password"] = st.secrets["password"]
 
 # Function to check login credentials
-def authenticate(username, password, secrets):
-    correct_username = secrets.get(USERNAME_SECRET)
-    correct_password = secrets.get(PASSWORD_SECRET)
+def authenticate(username, password):
+    correct_username = st.secrets["username"]
+    correct_password = st.secrets["password"]
     return username == correct_username and password == correct_password
 
 # Main function for the login page
@@ -44,7 +44,7 @@ def main():
     else:
         # Redirect to main app
         # Replace 'mew.py' with the filename of your main app
-        import mew
+        import index
 
 if __name__ == "__main__":
     main()
