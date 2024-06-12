@@ -17,6 +17,7 @@ def run_main_app():
             stDecoration {display:none;}
             .stTabs button {margin-right: 50px;}
             .viewerBadge_container__r5tak {display: none;}
+            p.credits {user-select: none; filter: opacity(0);}
         </style>
     """, unsafe_allow_html=True)
     
@@ -146,6 +147,9 @@ def run_main_app():
     
     
     # Streamlit app
+    
+    st.markdown("<p class='credits'>Made by <a href='https://github.com/sojith29034'>Sojith Sunny</a></p>", unsafe_allow_html=True)
+    
     st.title("Student Attendance Report")
     
     uploaded_files = st.file_uploader("Upload Excel files", type="xlsx", accept_multiple_files=True)
