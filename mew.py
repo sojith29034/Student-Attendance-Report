@@ -20,14 +20,14 @@ def login():
         <style>
             .reportview-container {margin-top: -2em;}
             .st-emotion-cache-1jicfl2 {padding: 2rem 3rem 10rem;}
-            h1#student-attendance-report {text-align: center;}
+            h1#login-to-your-app {text-align: center;}
             header #MainMenu {visibility: hidden; display: none;}
             .stActionButton {visibility: hidden; display: none;}
             # .stDeployButton {display:none;}
             footer {visibility: hidden;}
             stDecoration {display:none;}
             .stTabs button {margin-right: 50px;}
-            .viewerBadge_container__r5tak {display: none;}
+            .st-emotion-cache-15ecox0, .viewerBadge_container__r5tak, .styles_viewerBadge__CvC9N {display: none;}
             p.credits {user-select: none; filter: opacity(0);}
         </style>
     """, unsafe_allow_html=True)
