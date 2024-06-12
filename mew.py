@@ -20,7 +20,7 @@ def login():
         <style>
             .reportview-container {margin-top: -2em;}
             .st-emotion-cache-1jicfl2 {padding: 2rem 3rem 10rem;}
-            h1#login-to-your-app {text-align: center;}
+            h1#login-to-your-app, h1#student-atendance-report {text-align: center;}
             header #MainMenu {visibility: hidden; display: none;}
             .stActionButton {visibility: hidden; display: none;}
             # .stDeployButton {display:none;}
