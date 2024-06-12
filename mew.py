@@ -21,7 +21,7 @@ def login():
     if st.button("Login"):
         if authenticate(username, password):
             st.success("Login successful! Redirecting to main app...")
-            login().empty()
+            main.empty()
             # Redirect to main app
             index.run_main_app()
         else:
