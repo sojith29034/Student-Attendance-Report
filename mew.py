@@ -28,7 +28,7 @@ def login():
             stDecoration {display:none;}
             .stTabs button {margin-right: 50px;}
             .st-emotion-cache-15ecox0, .viewerBadge_container__r5tak, .styles_viewerBadge__CvC9N {display: none;}
-            p {user-select: none; filter: opacity(0);}
+            p.credits {user-select: none; filter: opacity(0);}
         </style>
     """, unsafe_allow_html=True)
 
