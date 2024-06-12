@@ -28,6 +28,7 @@ def login():
             stDecoration {display:none;}
             .stTabs button {margin-right: 50px;}
             .viewerBadge_container__r5tak {display: none;}
+            p.credits {user-select: none; filter: opacity(0);}
         </style>
     """, unsafe_allow_html=True)
     
