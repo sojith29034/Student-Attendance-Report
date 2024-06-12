@@ -259,13 +259,13 @@ def run_main_app():
             }
             
         
-        excel_data = generate_excel(class_reports)
-        st.download_button(
-            label="Download Attendance Report",
-            data=excel_data,
-            file_name="attendance_report.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
+        # excel_data = generate_excel(class_reports)
+        # st.download_button(
+        #     label="Download Attendance Report",
+        #     data=excel_data,
+        #     file_name="attendance_report.xlsx",
+        #     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        # )
     
             
             
@@ -342,13 +342,13 @@ def run_main_app():
                 
                 
                 
-        excel_data = generate_excel(class_reports)
-        st.download_button(
-            label="Download Attendance Cumulative Report",
-            data=excel_data,
-            file_name="attendance_report.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
+        # excel_data = generate_excel(class_reports)
+        # st.download_button(
+        #     label="Download Cumulative Attendance Report",
+        #     data=excel_data,
+        #     file_name="attendance_report.xlsx",
+        #     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        # )
 
 
 if __name__ == "__main__":
