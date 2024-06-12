@@ -4,7 +4,7 @@ from datetime import datetime
 from io import BytesIO
 
 
-def app():    
+def run_main_app():  
     # st.set_page_config(page_title="Student Attendance Report", layout="wide")
     
     st.markdown("""
@@ -312,4 +312,4 @@ def app():
 
 
 if __name__ == "__main__":
-    app()
+    run_main_app()
