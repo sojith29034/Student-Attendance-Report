@@ -1,5 +1,4 @@
 import streamlit as st
-import index  # Importing index.py
 
 # Define hardcoded credentials
 CORRECT_USERNAME = "soj"
@@ -20,15 +19,19 @@ def login():
     # Check if login button is clicked
     if st.button("Login"):
         if authenticate(username, password):
+            st.session_state.logged_in = True
             st.success("Login successful! Redirecting to main app...")
-            st.empty()
-            # Redirect to main app
-            index.run_main_app()
         else:
             st.error("Invalid username or password. Please try again.")
 
 def main():
-    if "login" not in st.query_params:
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+    
+    if st.session_state.logged_in:
+        import index
+        index.run_main_app()
+    else:
         login()
 
 if __name__ == "__main__":
