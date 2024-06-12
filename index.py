@@ -4,7 +4,7 @@ from datetime import datetime
 from io import BytesIO
 
 
-def main():    
+def app():    
     # st.set_page_config(page_title="Student Attendance Report", layout="wide")
     
     st.markdown("""
@@ -309,3 +309,7 @@ def main():
         #     file_name="attendance_report.xlsx",
         #     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         # )
+
+
+if __name__ == "__main__":
+    app()
