@@ -1,5 +1,9 @@
 import streamlit as st
 
+# Initialize session state for login
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+
 # Define hardcoded credentials
 CORRECT_USERNAME = "soj"
 CORRECT_PASSWORD = "soj"
@@ -20,14 +24,11 @@ def login():
     if st.button("Login"):
         if authenticate(username, password):
             st.session_state.logged_in = True
-            st.success("Login successful! Redirecting to main app...")
+            st.experimental_rerun()
         else:
             st.error("Invalid username or password. Please try again.")
 
 def main():
-    if "logged_in" not in st.session_state:
-        st.session_state.logged_in = False
-    
     if st.session_state.logged_in:
         import index
         index.run_main_app()
