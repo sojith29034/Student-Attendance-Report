@@ -1,4 +1,5 @@
 import streamlit as st
+import index  # Importing index.py
 
 # Define hardcoded credentials
 CORRECT_USERNAME = "soj"
@@ -21,17 +22,13 @@ def login():
         if authenticate(username, password):
             st.success("Login successful! Redirecting to main app...")
             # Redirect to main app
-            # Replace 'main_app_url' with the URL of your main app
-            st.experimental_set_query_params(login=True)
+            index.main()
         else:
             st.error("Invalid username or password. Please try again.")
 
 def main():
     if "login" not in st.query_params:
         login()
-    else:
-        # Redirect to main app
-        import index
 
 if __name__ == "__main__":
     main()
