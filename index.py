@@ -6,7 +6,7 @@ from io import BytesIO
 
 def run_main_app():  
     # st.set_page_config(page_title="Student Attendance Report", layout="wide")
-    empty()
+    st.empty()
     st.markdown("""
         <style>
             .reportview-container {margin-top: -2em;}
