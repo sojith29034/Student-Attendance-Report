@@ -26,6 +26,11 @@ def authenticate(username, password):
     # CORRECT_PASSWORD = "soj"
     CORRECT_USERNAME = os.getenv('USERNAME')
     CORRECT_PASSWORD = os.getenv('PASSWORD')
+
+    # Print the loaded credentials for debugging
+    st.write(f"Correct Username from .env: {CORRECT_USERNAME}")
+    st.write(f"Correct Password from .env: {CORRECT_PASSWORD}")
+
     return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
 
 # Function to check login credentials
