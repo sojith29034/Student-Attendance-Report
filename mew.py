@@ -4,12 +4,11 @@ import streamlit as st
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
-# Define hardcoded credentials
-CORRECT_USERNAME = "soj"
-CORRECT_PASSWORD = "soj"
-
 # Function to check login credentials
 def authenticate(username, password):
+    # Define hardcoded credentials
+    CORRECT_USERNAME = st.secrets.login.username
+    CORRECT_PASSWORD = st.secrets.login.password
     return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
 
 # Main function for the login page
