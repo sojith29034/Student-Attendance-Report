@@ -24,6 +24,7 @@ def run_main_app():
             .stTabs button {margin-right: 50px;}
             .viewerBadge_container__r5tak {display: none;}
             p.credits {user-select: none; filter: opacity(0);}
+            .logout_button {position: absolute; top: 25px; right: 25px;}
         </style>
     """, unsafe_allow_html=True)
     
@@ -193,11 +194,9 @@ def run_main_app():
     logout_button = st.empty()
 
     with logout_button.container():
-        col1, col2, col3 = st.columns([10, 1, 3])
-        with col3:
-            if st.button("Logout"):
-                st.session_state.logged_in = False
-                st.experimental_rerun()
+        if st.button("Logout"):
+            st.session_state.logged_in = False
+            st.experimental_rerun()
         
     st.title("Student Attendance Report")
     
