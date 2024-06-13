@@ -31,7 +31,7 @@ def run_main_app():
     st.markdown("""
         <style>
         .logout-button {
-            right: 2%;
+            right: 0;
         }
         </style>
         """, unsafe_allow_html=True)
