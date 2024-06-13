@@ -51,14 +51,18 @@ def login():
     # except KeyError:
     #     st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
     #     return
+
+    try:
+        credentials = {
+            "username": st.secrets["username"],
+            "password": st.secrets["password"]
+        }
+    except KeyError:
+        st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
+        return
     
     # Check if login button is clicked
     if st.button("Login"):
-        try:
-            credentials = st.secrets
-        except KeyError:
-            st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
-            return
         if authenticate(username, password, credentials):
             st.session_state.logged_in = True
             st.experimental_rerun()
