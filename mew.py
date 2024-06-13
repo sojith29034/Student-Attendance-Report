@@ -1,5 +1,9 @@
-import streamlit as st
 import os
+import streamlit as st
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize session state for login
 if 'logged_in' not in st.session_state:
@@ -10,8 +14,10 @@ def authenticate(username, password):
     # Define hardcoded credentials
     # CORRECT_USERNAME = secrets["username"]
     # CORRECT_PASSWORD = secrets["password"]
-    CORRECT_USERNAME = "soj"
-    CORRECT_PASSWORD = "soj"
+    # CORRECT_USERNAME = "soj"
+    # CORRECT_PASSWORD = "soj"
+    CORRECT_USERNAME = os.getenv('USERNAME')
+    CORRECT_PASSWORD = os.getenv('PASSWORD')
     return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
 
 # Function to check login credentials

@@ -3,4 +3,4 @@ pandas
 pytesseract
 Pillow
 openpyxl
-flask
+python-dotenv
