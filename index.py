@@ -33,6 +33,7 @@ def run_main_app():
         .logout-button {
             display: flex;
             justify-content: flex-end;
+            width: 100%;
         }
         </style>
         """, unsafe_allow_html=True)
