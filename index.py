@@ -27,15 +27,6 @@ def run_main_app():
         </style>
     """, unsafe_allow_html=True)
     
-    # Add custom CSS to align the logout button to the right
-    st.markdown("""
-        <style>
-        .logout-button {
-            right: 0;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-    
     
     
     
@@ -202,7 +193,7 @@ def run_main_app():
     logout_button = st.empty()
 
     with logout_button.container():
-        col1, col2, col3 = st.columns([5, 1, 1])
+        col1, col2, col3 = st.columns([9, 1, 1])
         with col3:
             if st.button("Logout"):
                 st.session_state.logged_in = False
