@@ -27,6 +27,15 @@ def run_main_app():
         </style>
     """, unsafe_allow_html=True)
     
+    # Add custom CSS to align the logout button to the right
+    st.markdown("""
+        <style>
+        .logout-button {
+            display: flex;
+            justify-content: flex-end;
+        }
+        </style>
+        """, unsafe_allow_html=True)
     
     
     
@@ -189,11 +198,16 @@ def run_main_app():
     
     # Streamlit app
     st.markdown("<p class='credits'>Made by <a href='https://github.com/sojith29034'>Sojith Sunny</a></p>", unsafe_allow_html=True)
-    
-    # Logout button
-    if st.button("Logout"):
-        st.session_state.logged_in = False
-        st.experimental_rerun()
+
+    # Create a container for the logout button
+    logout_button = st.empty()
+
+    with logout_button.container():
+        col1, col2, col3 = st.columns([3, 1, 1])
+        with col3:
+            if st.button("Logout"):
+                st.session_state.logged_in = False
+                st.experimental_rerun()
         
     st.title("Student Attendance Report")
     
