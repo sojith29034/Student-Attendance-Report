@@ -13,9 +13,7 @@ def authenticate(username, password):
     return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
 
 # Main function for the login page
-def login():
-    st.set_page_config(page_title="Student Attendance Report", layout="wide")
-    
+def login():    
     st.markdown("""
         <style>
             .reportview-container {margin-top: -2em;}
