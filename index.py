@@ -194,6 +194,7 @@ def run_main_app():
     logout_button = st.empty()
 
     with logout_button.container():
+        st.button("Logout", class_="logout-button")
         if st.button("Logout"):
             st.session_state.logged_in = False
             st.experimental_rerun()
