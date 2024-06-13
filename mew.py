@@ -41,7 +41,7 @@ def login():
 
     try:
         secrets = {
-            "username": st.secrets["login"]["username"]
+            "username": st.secrets["login"]["username"],
             "password": st.secrets["login"]["password"]
         }
     except KeyError:
