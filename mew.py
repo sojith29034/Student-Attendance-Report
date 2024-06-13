@@ -9,25 +9,12 @@ load_dotenv()
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
-# # Function to check login credentials
+# Function to check login credentials
 def authenticate(username, password):
-    # Define hardcoded credentials
-    # CORRECT_USERNAME = secrets["username"]
-    # CORRECT_PASSWORD = secrets["password"]
-    # CORRECT_USERNAME = "soj"
-    # CORRECT_PASSWORD = "soj"
     CORRECT_USERNAME = os.getenv('USERNAME')
     CORRECT_PASSWORD = os.getenv('PASSWORD')
-
-    # Print the loaded credentials for debugging
-    st.write(f"Correct Username from .env: {CORRECT_USERNAME}")
-    st.write(f"Correct Password from .env: {CORRECT_PASSWORD}")
-
     return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
 
-# Function to check login credentials
-# def authenticate(username, password):
-#     return username == os.environ["username"] and password == os.environ["password"]
 
 # Main function for the login page
 def login():    
@@ -55,27 +42,7 @@ def login():
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
 
-    # try:
-    #     secrets = {
-    #         "username": st.secrets["login"]["username"],
-    #         "password": st.secrets["login"]["password"]
-    #     }
-    # except KeyError:
-    #     st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
-    #     return
 
-    # try:
-    #     credentials = {
-    #         "username": st.secrets["username"],
-    #         "password": st.secrets["password"]
-    #     }
-    # except KeyError:
-    #     st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
-    #     return
-    
-    # os.environ["username"] == st.secrets["username"]
-    # os.environ["password"] == st.secrets["password"]
-    
     # Check if login button is clicked
     if st.button("Login"):
         if authenticate(username, password):
