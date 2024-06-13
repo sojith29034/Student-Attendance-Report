@@ -9,6 +9,8 @@ from openpyxl.styles import Alignment
 
 
 def run_main_app():      
+    st.set_page_config(page_title="Student Attendance Report", layout="wide")
+    
     st.markdown("""
         <style>
             .reportview-container {margin-top: -2em;}
