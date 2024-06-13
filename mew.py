@@ -2,6 +2,14 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 
+try:
+    from dotenv import load_dotenv
+except ModuleNotFoundError:
+    import subprocess
+    subprocess.check_call(["pip", "install", "python-dotenv"])
+    from dotenv import load_dotenv
+
+
 # Load environment variables from .env file
 load_dotenv()
 
