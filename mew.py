@@ -41,8 +41,8 @@ def login():
 
     try:
         secrets = {
-            "username" = st.secrets["login"]["username"]
-            "password" = st.secrets["login"]["password"]
+            "username": st.secrets["login"]["username"]
+            "password": st.secrets["login"]["password"]
         }
     except KeyError:
         st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
