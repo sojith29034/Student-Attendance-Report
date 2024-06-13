@@ -24,10 +24,31 @@ def run_main_app():
             .stTabs button {margin-right: 50px;}
             .viewerBadge_container__r5tak {display: none;}
             p.credits {user-select: none; filter: opacity(0);}
-            .logout-button p{display: inline; position: absolute; top: 15px; right: 25px;}
         </style>
     """, unsafe_allow_html=True)
     
+    
+    # Style for the logout button (CSS)
+    st.markdown(
+        """
+        <style>
+        .logout-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            right: 25px;
+        }
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
     
     
     
@@ -190,29 +211,6 @@ def run_main_app():
     # Streamlit app
     st.markdown("<p class='credits'>Made by <a href='https://github.com/sojith29034'>Sojith Sunny</a></p>", unsafe_allow_html=True)
     
-    
-    # Style for the logout button (CSS)
-    st.markdown(
-        """
-        <style>
-        .logout-button {
-            background-color: #f44336;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            position: absolute;
-            top: 25px;
-            right: 25px;
-        }
-        .logout-button:hover {
-            background-color: #d32f2f;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
     # Render the logout button using HTML and CSS
     st.markdown('<button class="logout-button" onclick="handleLogout()">Logout</button>', unsafe_allow_html=True)
