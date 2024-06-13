@@ -7,10 +7,10 @@ if 'logged_in' not in st.session_state:
 # Function to check login credentials
 def authenticate(username, password):
     # Define hardcoded credentials
-    # CORRECT_USERNAME = st.secrets["login"]["username"]
-    # CORRECT_PASSWORD = st.secrets["login"]["password"]
-    CORRECT_USERNAME = "soj"
-    CORRECT_PASSWORD = "soj"
+    CORRECT_USERNAME = secrets["username"]
+    CORRECT_PASSWORD = secrets["password"]
+    # CORRECT_USERNAME = "soj"
+    # CORRECT_PASSWORD = "soj"
     return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
 
 # Main function for the login page
@@ -38,6 +38,15 @@ def login():
     # Get user input
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
+
+    try:
+        secrets = {
+            "username" = st.secrets["login"]["username"]
+            "password" = st.secrets["login"]["password"]
+        }
+    except KeyError:
+        st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
+        return
     
     # Check if login button is clicked
     if st.button("Login"):
