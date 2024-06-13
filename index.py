@@ -189,16 +189,54 @@ def run_main_app():
     
     # Streamlit app
     st.markdown("<p class='credits'>Made by <a href='https://github.com/sojith29034'>Sojith Sunny</a></p>", unsafe_allow_html=True)
+    
+    
+    # Style for the logout button (CSS)
+    st.markdown(
+        """
+        <style>
+        .logout-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-    # Create a container for the logout button
-    logout_button = st.empty()
+    # Render the logout button using HTML and CSS
+    st.markdown('<button class="logout-button" onclick="handleLogout()">Logout</button>', unsafe_allow_html=True)
 
-    with logout_button.container():
-        st.markdown("<div class='logout-button>", unsafe_allow_html=True)
-        if st.button("Logout"):
-            st.session_state.logged_in = False
-            st.experimental_rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
+    # JavaScript function to handle logout
+    st.markdown(
+        """
+        <script>
+        function handleLogout() {
+            const Http = new XMLHttpRequest();
+            const url = '/logout';  // URL for logout endpoint
+            Http.open("GET", url);
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+                if (Http.readyState === 4 && Http.status === 200) {
+                    window.location.reload();  // Reload page on successful logout
+                }
+            };
+        }
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
         
     st.title("Student Attendance Report")
     
