@@ -194,10 +194,11 @@ def run_main_app():
     logout_button = st.empty()
 
     with logout_button.container():
-        st.markdown('<button class="logout-button">Logout</button>', unsafe_allow_html=True)
+        st.markdown("<div class='logout-button>", unsafe_allow_html=True)
         if st.button("Logout"):
             st.session_state.logged_in = False
             st.experimental_rerun()
+        st.markdown("</div>", unsafe_allow_html=True)
         
     st.title("Student Attendance Report")
     
@@ -341,10 +342,6 @@ def run_main_app():
                                 for student in details:
                                     st.markdown(f"<li>{student}</li>", unsafe_allow_html=True)
                                 st.markdown("</ul>", unsafe_allow_html=True)
-    
-                                # Highlight rows in the dataframe based on the sub_tab condition
-                                df = report["Attendance Data"].style.apply(lambda row: highlight_rows(row, details), axis=1)
-                                # st.dataframe(df)  # Display highlighted dataframe first
                             else:
                                 st.write(f"No student has {sub_tab_title.lower()}.")
     
