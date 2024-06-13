@@ -193,7 +193,7 @@ def run_main_app():
     logout_button = st.empty()
 
     with logout_button.container():
-        col1, col2, col3 = st.columns([15, 1, 1])
+        col1, col2, col3 = st.columns([10, 1, 3])
         with col3:
             if st.button("Logout"):
                 st.session_state.logged_in = False
