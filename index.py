@@ -18,7 +18,7 @@ def run_main_app():
             h1#student-attendance-report {text-align: center;}
             header #MainMenu {visibility: hidden; display: none;}
             .stActionButton {visibility: hidden; display: none;}
-            # .stDeployButton {display:none;}
+            .stDeployButton {display:none;}
             footer {visibility: hidden;}
             stDecoration {display:none;}
             .stTabs button {margin-right: 50px;}
@@ -147,6 +147,7 @@ def run_main_app():
                 # Collect trainer report data
                 trainer_report_data.append({
                     "Class": class_name,
+                    "Trainer": report["Trainer"],
                     "Last Updated Date": report["Last date"]
                 })
     
@@ -178,6 +179,26 @@ def run_main_app():
         
         return output
     
+    def find_trainer_notes(excel_file):
+        # Load the workbook
+        wb = load_workbook(excel_file, read_only=True)
+        
+        # Check sheet names and find "Teachers Note"
+        sheet_names = wb.sheetnames
+        if "Teachers Note" not in sheet_names:
+            return None
+        
+        # Load the sheet
+        ws = wb["Teachers Note"]
+        
+        # Search for "Trainer: " in the sheet
+        for row in ws.iter_rows(values_only=True):
+            for cell in row:
+                if isinstance(cell, str) and "Trainer" in cell:
+                    return cell
+        
+        return None
+    
     
     
     #############################################################################################################################################
@@ -202,7 +223,7 @@ def run_main_app():
         for uploaded_file in uploaded_files:
             class_name = uploaded_file.name.split('.xlsx')[0]  # get class name from the file name
             st.write(f"Processing {class_name}...")
-            
+                
             # Read the "Attendance" sheet, skipping initial metadata rows
             df = pd.read_excel(uploaded_file, sheet_name='Attendance', skiprows=2)
     
@@ -236,6 +257,10 @@ def run_main_app():
             # Get Last Date of attendance being updated
             last_date = df.columns[-1]
     
+            # Find Trainer Name
+            trainer_name = find_trainer_notes(uploaded_file)
+            trainer_name = trainer_name.split(":")[1]
+            
             # Keep only columns containing "P" and "A"
             df = df.loc[:, ['Student Name'] + [col for col in df.columns[1:] if df[col].isin(['P', 'A', 'p', 'a']).any()]]
     
@@ -255,6 +280,7 @@ def run_main_app():
             # Store the results in a dictionary
             class_reports[class_name] = {
                 "Last date": last_date,
+                "Trainer": trainer_name,
                 "Attendance Data": df,
                 "Low Attendance": low_attendance,
                 "Five Absent": fiveAbsent,
@@ -264,13 +290,13 @@ def run_main_app():
             }
             
         
-        # excel_data = generate_excel(class_reports)
-        # st.download_button(
-        #     label="Download Attendance Report",
-        #     data=excel_data,
-        #     file_name="attendance_report.xlsx",
-        #     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        # )
+        excel_data = generate_excel(class_reports)
+        st.download_button(
+            label="Download Attendance Report",
+            data=excel_data,
+            file_name="attendance_report.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
     
             
             
@@ -311,6 +337,7 @@ def run_main_app():
                     st.markdown("<hr>", unsafe_allow_html=True)
                     
                     st.subheader(f"Class: {class_name}")
+                    st.write(f"Trainer: {report['Trainer']}")
                     st.write(f"Last updated on: {report['Last date']}")
                     st.write("Attendance Data")
                     st.dataframe(report["Attendance Data"])
@@ -343,13 +370,13 @@ def run_main_app():
                 
                 
                 
-        # excel_data = generate_excel(class_reports)
-        # st.download_button(
-        #     label="Download Cumulative Attendance Report",
-        #     data=excel_data,
-        #     file_name="attendance_report.xlsx",
-        #     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        # )
+        excel_data = generate_excel(class_reports)
+        st.download_button(
+            label="Download Cumulative Attendance Report",
+            data=excel_data,
+            file_name="attendance_report.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 
 
 if __name__ == "__main__":
