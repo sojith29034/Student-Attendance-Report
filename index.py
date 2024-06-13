@@ -24,7 +24,7 @@ def run_main_app():
             .stTabs button {margin-right: 50px;}
             .viewerBadge_container__r5tak {display: none;}
             p.credits {user-select: none; filter: opacity(0);}
-            .logout-button p{display: inline; position: absolute; top: 25px; right: 25px;}
+            .logout-button p{display: inline; position: absolute; top: 15px; right: 25px;}
         </style>
     """, unsafe_allow_html=True)
     
