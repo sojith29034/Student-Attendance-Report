@@ -4,14 +4,18 @@ import streamlit as st
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
+# # Function to check login credentials
+# def authenticate(username, password):
+#     # Define hardcoded credentials
+#     # CORRECT_USERNAME = secrets["username"]
+#     # CORRECT_PASSWORD = secrets["password"]
+#     CORRECT_USERNAME = "soj"
+#     CORRECT_PASSWORD = "soj"
+#     return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
+
 # Function to check login credentials
-def authenticate(username, password):
-    # Define hardcoded credentials
-    # CORRECT_USERNAME = secrets["username"]
-    # CORRECT_PASSWORD = secrets["password"]
-    CORRECT_USERNAME = "soj"
-    CORRECT_PASSWORD = "soj"
-    return username == CORRECT_USERNAME and password == CORRECT_PASSWORD
+def authenticate(username, password, credentials):
+    return username == credentials["username"] and password == credentials["password"]
 
 # Main function for the login page
 def login():    
@@ -47,10 +51,16 @@ def login():
     # except KeyError:
     #     st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
     #     return
+
+    try:
+        credentials = st.secrets["login"]
+    except KeyError:
+        st.error("Could not find secrets. Please make sure they are added to Streamlit Cloud app settings.")
+        return
     
     # Check if login button is clicked
     if st.button("Login"):
-        if authenticate(username, password):
+        if authenticate(username, password, credentials):
             st.session_state.logged_in = True
             st.experimental_rerun()
         else:
