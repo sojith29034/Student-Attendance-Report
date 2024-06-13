@@ -190,6 +190,11 @@ def run_main_app():
     # Streamlit app
     st.markdown("<p class='credits'>Made by <a href='https://github.com/sojith29034'>Sojith Sunny</a></p>", unsafe_allow_html=True)
     
+    # Logout button
+    if st.button("Logout"):
+        st.session_state.logged_in = False
+        st.experimental_rerun()
+        
     st.title("Student Attendance Report")
     
     uploaded_files = st.file_uploader("Upload Excel files", type="xlsx", accept_multiple_files=True)
