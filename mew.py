@@ -67,7 +67,7 @@ def login():
     
     # Check if login button is clicked
     if st.button("Login"):
-        if authenticate(username, password, credentials):
+        if authenticate(username, password):
             st.session_state.logged_in = True
             st.experimental_rerun()
         else:
