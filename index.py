@@ -290,11 +290,15 @@ def run_main_app():
             }
             
         
-        excel_data = generate_excel(class_reports)
+        # Define the filename separately
+        today_date = datetime.now().strftime('%d-%m-%Y')
+        filename = f"attendance_report_{today_date}.xlsx"
+        
+        # Download button with the corrected filename parameter
         st.download_button(
             label="Download Attendance Report",
             data=excel_data,
-            file_name=f"attendance_report_{datetime.now().strftime('%d-%m-%Y')}.xlsx",
+            file_name=filename,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
     
@@ -374,7 +378,7 @@ def run_main_app():
         st.download_button(
             label="Download Cumulative Attendance Report",
             data=excel_data,
-            file_name=f"attendance_report_{datetime.now().strftime('%d-%m-%Y')}.xlsx",
+            file_name=filename,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
 
