@@ -294,6 +294,8 @@ def run_main_app():
         today_date = datetime.now().strftime('%d-%m-%Y')
         filename = f"attendance_report_{today_date}.xlsx"
         
+        excel_data = generate_excel(class_reports)
+        
         # Download button with the corrected filename parameter
         st.download_button(
             label="Download Attendance Report",
@@ -374,7 +376,6 @@ def run_main_app():
                 
                 
                 
-        excel_data = generate_excel(class_reports)
         st.download_button(
             label="Download Cumulative Attendance Report",
             data=excel_data,
